@@ -2,7 +2,32 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Welcome to TaskManager</h1>
+        <p class="lead">Manage your tasks efficiently and never miss a deadline.</p>
+        <hr class="my-4">
+        <p>Learn more about our application and how it can help you stay organized.</p>
+        <a class="btn btn-primary btn-lg" href="~/Home/About" role="button">Learn more</a>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <h2>About TaskManager</h2>
+            <p>TaskManager is a simple and efficient tool to help you manage your daily tasks. You can create, edit, and delete tasks, set deadlines, and mark tasks as completed. Stay organized and never miss a deadline with TaskManager.</p>
+        </div>
+        <div class="col-md-6 text-center">
+            @* <h2>Tasks to Complete</h2> *@
+            @* <p class="display-4">@ViewData["IncompleteTasksCount"]</p> *@
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a class="btn btn-primary btn-lg" href="~/Tasks/Index">My Tasks</a>
+                <a class="btn btn-success btn-lg" href="~/Tasks/Create">Add New Task</a>
+            }
+            else
+            {
+                <a class="btn btn-primary btn-lg" href="~/Identity/Account/Login">Login</a>
+            }            
+        </div>
+    </div>
 </div>
